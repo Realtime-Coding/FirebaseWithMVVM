@@ -79,8 +79,9 @@ class NoteDetailFragment : Fragment() {
                 is UiState.Success -> {
                     binding.progressBar.hide()
                     toast(state.data)
-                    isMakeEnableUI(false)
+                    binding.done.hide()
                     binding.edit.show()
+                    isMakeEnableUI(false)
                 }
             }
         }
@@ -112,7 +113,7 @@ class NoteDetailFragment : Fragment() {
             tagsList = note.tags
             addTags(tagsList)
             binding.description.setText(note.description)
-            binding.done.show()
+            binding.done.hide()
             binding.edit.show()
             binding.delete.show()
             isMakeEnableUI(false)
@@ -142,6 +143,7 @@ class NoteDetailFragment : Fragment() {
         }
         binding.edit.setOnClickListener {
             isMakeEnableUI(true)
+            binding.done.show()
             binding.edit.hide()
             binding.title.requestFocus()
         }
