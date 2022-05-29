@@ -29,15 +29,6 @@ class NoteListingFragment : Fragment() {
                     putString("type","view")
                     putParcelable("note",item)
                 })
-            },
-            onEditClicked = { pos, item ->
-                findNavController().navigate(R.id.action_noteListingFragment_to_noteDetailFragment,Bundle().apply {
-                    putString("type","edit")
-                    putParcelable("note",item)
-                })
-            },
-            onDeleteClicked = { pos, item ->
-
             }
         )
     }
