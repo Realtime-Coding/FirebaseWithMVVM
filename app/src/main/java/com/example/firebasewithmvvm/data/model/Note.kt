@@ -8,7 +8,9 @@ import java.util.*
 @Parcelize
 data class Note(
     var id: String = "",
-    val text: String = "",
+    val title: String = "",
+    val description: String = "",
+    val tags: List<String> = arrayListOf(),
     @ServerTimestamp
     val date: Date = Date(),
-): Parcelable
+) : Parcelable
