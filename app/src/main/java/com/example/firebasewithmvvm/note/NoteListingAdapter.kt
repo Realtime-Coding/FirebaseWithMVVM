@@ -45,8 +45,8 @@ class NoteListingAdapter(
             binding.title.setText(item.title)
             binding.date.setText(sdf.format(item.date))
             binding.tags.apply {
+                removeAllViews()
                 if (item.tags.isNullOrEmpty()){
-                    removeAllViews()
                     hide()
                     return
                 }

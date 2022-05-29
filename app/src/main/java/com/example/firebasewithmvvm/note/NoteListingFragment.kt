@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.firebasewithmvvm.R
+import com.example.firebasewithmvvm.databinding.FragmentNoteDetailBinding
 import com.example.firebasewithmvvm.databinding.FragmentNoteListingBinding
 import com.example.firebasewithmvvm.util.UiState
 import com.example.firebasewithmvvm.util.hide
@@ -38,8 +39,12 @@ class NoteListingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentNoteListingBinding.inflate(layoutInflater)
-        return binding.root
+        if (this::binding.isInitialized){
+            return binding.root
+        }else {
+            binding = FragmentNoteListingBinding.inflate(layoutInflater)
+            return binding.root
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

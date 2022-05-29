@@ -34,8 +34,12 @@ class NoteDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentNoteDetailBinding.inflate(layoutInflater)
-        return binding.root
+        if (this::binding.isInitialized){
+            return binding.root
+        }else {
+            binding = FragmentNoteDetailBinding.inflate(layoutInflater)
+            return binding.root
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
