@@ -1,72 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
     tools:context=".note.NoteDetailFragment">
 
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
     <TextView
-        android:id="@+id/label"
+        android:id="@+id/back_text"
+        style="@style/SubTitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="96dp"
-        android:text="Message"
+        android:text="All Notes"
         android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="@+id/back" />
 
-    <EditText
-        android:id="@+id/note_msg"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/black_white_rect_bg"
-        android:gravity="start|top"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textSize="14dp"
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:paddingHorizontal="5dp"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/update"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="5dp"
+        android:src="@drawable/ic_baseline_check_24"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <View
+        android:id="@+id/top_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/black10"
+        app:layout_constraintTop_toBottomOf="@+id/back_text"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/TitleStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Exploring Ideas"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label" />
+        app:layout_constraintTop_toBottomOf="@+id/top_divider" />
 
+    <TextView
+        android:id="@+id/date_label"
+        style="@style/TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Last Modified"
+        android:textColor="@color/black70"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <RelativeLayout
-        android:id="@+id/button_layout"
+    <TextView
+        android:id="@+id/date"
+        style="@style/TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="30 April 2021, 19:33 PM"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/date_label"
+        app:layout_constraintStart_toEndOf="@+id/date_label"
+        app:layout_constraintTop_toTopOf="@+id/date_label" />
+
+    <LinearLayout
+        android:id="@+id/add_tag_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_label">
+
+        <TextView
+            android:id="@+id/tag_label"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tags"
+            android:textColor="@color/black70"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <ImageView
+            android:id="@+id/tag_add"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_baseline_add_circle_24"
+            app:layout_constraintEnd_toStartOf="@+id/update"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black" />
+
+    </LinearLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/tags"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/add_tag_ll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/date"
+        app:layout_constraintTop_toTopOf="@+id/add_tag_ll">
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Design"
+            android:textAppearance="@style/TextStyle"
+            android:textColor="@color/black70"
+            app:chipCornerRadius="6dp"
+            app:chipMinTouchTargetSize="8dp" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Productivity"
+            android:textAppearance="@style/TextStyle"
+            android:textColor="@color/black70"
+            app:chipCornerRadius="6dp"
+            app:chipMinTouchTargetSize="8dp" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+1"
+            android:textAppearance="@style/TextStyle"
+            android:textColor="@color/black70"
+            app:chipCornerRadius="6dp"
+            app:chipMinTouchTargetSize="8dp" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <View
+        android:id="@+id/middle_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/black10"
+        app:layout_constraintTop_toBottomOf="@+id/add_tag_ll"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/DescStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/note_detail_desc_placeholder"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_msg">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/black_rect_bg"
-            android:text="Create"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
-
-        <ProgressBar
-            android:id="@+id/btn_progress_ar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="16dp"
-            android:elevation="10dp"
-            android:indeterminateTint="@color/white"
-            android:visibility="invisible" />
-
-    </RelativeLayout>
+        app:layout_constraintTop_toBottomOf="@+id/middle_divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

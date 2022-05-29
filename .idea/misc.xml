@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.222" />
         <entry key="app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.222" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
-        <entry key="app/src/main/res/layout/fragment_note_detail.xml" value="0.19635416666666666" />
+        <entry key="app/src/main/res/layout/fragment_note_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_note_listing.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/item_note_layout.xml" value="0.27760416666666665" />
       </map>
