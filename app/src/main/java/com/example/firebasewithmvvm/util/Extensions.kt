@@ -32,7 +32,7 @@ fun Fragment.toast(msg: String?){
 
 fun ChipGroup.addChip(text: String) {
     val chip: Chip = LayoutInflater.from(context).inflate(R.layout.item_chip,null,false) as Chip
-    chip.text = text
+    chip.text = if (text.length > 9) text.substring(0,9) + "..." else text
     chip.isClickable = false
     addView(chip)
 }
