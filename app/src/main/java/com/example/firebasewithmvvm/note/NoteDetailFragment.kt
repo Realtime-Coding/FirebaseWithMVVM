@@ -84,6 +84,23 @@ class NoteDetailFragment : Fragment() {
                 }
             }
         }
+
+        viewModel.deleteNote.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(state.error)
+                }
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    toast(state.data)
+                    findNavController().navigateUp()
+                }
+            }
+        }
     }
 
     private fun updateUI() {
@@ -118,7 +135,7 @@ class NoteDetailFragment : Fragment() {
             isMakeEnableUI(true)
         }
         binding.delete.setOnClickListener {
-            toast("delete Note")
+            objNote?.let { viewModel.deleteNote(it) }
         }
         binding.addTagLl.setOnClickListener {
            showAddTagDialog()
