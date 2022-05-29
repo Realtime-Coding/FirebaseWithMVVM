@@ -26,7 +26,6 @@ class NoteListingFragment : Fragment() {
         NoteListingAdapter(
             onItemClicked = { pos, item ->
                 findNavController().navigate(R.id.action_noteListingFragment_to_noteDetailFragment,Bundle().apply {
-                    putString("type","view")
                     putParcelable("note",item)
                 })
             }
@@ -45,9 +44,7 @@ class NoteListingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
         binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_noteListingFragment_to_noteDetailFragment,Bundle().apply {
-                putString("type","create")
-            })
+            findNavController().navigate(R.id.action_noteListingFragment_to_noteDetailFragment)
         }
         viewModel.getNotes()
         viewModel.note.observe(viewLifecycleOwner) { state ->
