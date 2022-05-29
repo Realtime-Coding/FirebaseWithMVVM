@@ -65,7 +65,7 @@
         style="@style/TitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="22dp"
         android:text="Exploring Ideas"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,10 +98,10 @@
         android:id="@+id/add_tag_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/tags"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_label">
+        app:layout_constraintTop_toTopOf="@+id/tags">
 
         <TextView
             android:id="@+id/tag_label"
@@ -129,24 +129,18 @@
         android:id="@+id/tags"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/add_tag_ll"
+        android:layout_marginTop="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/date"
-        app:layout_constraintTop_toTopOf="@+id/add_tag_ll">
-
-        <include layout="@layout/item_chip"/>
-        <include layout="@layout/item_chip"/>
-        <include layout="@layout/item_chip"/>
-
-    </com.google.android.material.chip.ChipGroup>
+        app:layout_constraintTop_toBottomOf="@+id/date_label"/>
 
     <View
         android:id="@+id/middle_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="22dp"
         android:background="@color/black10"
-        app:layout_constraintTop_toBottomOf="@+id/add_tag_ll"
+        app:layout_constraintTop_toBottomOf="@+id/tags"
         tools:layout_editor_absoluteX="16dp" />
 
     <TextView
@@ -154,7 +148,7 @@
         style="@style/DescStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="22dp"
         android:text="@string/note_detail_desc_placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
