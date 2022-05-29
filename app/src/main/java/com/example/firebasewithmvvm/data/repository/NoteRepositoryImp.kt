@@ -1,16 +1,19 @@
 package com.example.firebasewithmvvm.data.repository
 
 import com.example.firebasewithmvvm.data.model.Note
-import com.example.firebasewithmvvm.util.FireStoreTables
+import com.example.firebasewithmvvm.util.FireStoreCollection
+import com.example.firebasewithmvvm.util.FireStoreDocumentField
 import com.example.firebasewithmvvm.util.UiState
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class NoteRepositoryImp(
     val database: FirebaseFirestore
 ) : NoteRepository {
 
     override fun getNotes(result: (UiState<List<Note>>) -> Unit) {
-        database.collection(FireStoreTables.NOTE)
+        database.collection(FireStoreCollection.NOTE)
+            .orderBy(FireStoreDocumentField.DATE, Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener {
                 val notes = arrayListOf<Note>()
@@ -32,7 +35,7 @@ class NoteRepositoryImp(
     }
 
     override fun addNote(note: Note, result: (UiState<Pair<Note,String>>) -> Unit) {
-        val document = database.collection(FireStoreTables.NOTE).document()
+        val document = database.collection(FireStoreCollection.NOTE).document()
         note.id = document.id
         document
             .set(note)
@@ -51,7 +54,7 @@ class NoteRepositoryImp(
     }
 
     override fun updateNote(note: Note, result: (UiState<String>) -> Unit) {
-        val document = database.collection(FireStoreTables.NOTE).document(note.id)
+        val document = database.collection(FireStoreCollection.NOTE).document(note.id)
         document
             .set(note)
             .addOnSuccessListener {
