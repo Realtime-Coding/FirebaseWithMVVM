@@ -39,7 +39,7 @@ class NoteDetailFragment : Fragment() {
         observer()
     }
 
-    private fun observer(){
+    private fun observer() {
         viewModel.addNote.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Loading -> {
@@ -78,7 +78,14 @@ class NoteDetailFragment : Fragment() {
         objNote?.let { note ->
             binding.title.setText(note.title)
             binding.date.setText(sdf.format(note.date))
-            binding.tags.apply { note.tags.forEach { tag -> addChip(tag) } }
+            binding.tags.apply {
+                note.tags.forEachIndexed { index, tag ->
+                    addChip(tag,true) {
+                        note.tags.removeAt(index)
+                        this.removeViewAt(index)
+                    }
+                }
+            }
             binding.description.setText(note.description)
             binding.update.show()
             binding.delete.show()
@@ -134,7 +141,7 @@ class NoteDetailFragment : Fragment() {
     }
 
     private fun getNote(): Note {
-        val tags = binding.tags.children.toList().map { (it as Chip).text.toString() }
+        val tags = binding.tags.children.toList().map { (it as Chip).text.toString() }.toMutableList()
         return Note(
             id = objNote?.id ?: "",
             title = binding.title.text.toString(),
