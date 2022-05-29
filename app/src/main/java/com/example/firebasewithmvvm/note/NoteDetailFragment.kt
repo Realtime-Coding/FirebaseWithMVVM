@@ -60,7 +60,8 @@ class NoteDetailFragment : Fragment() {
                 }
                 is UiState.Success -> {
                     binding.progressBar.hide()
-                    toast(state.data)
+                    objNote = state.data.first
+                    toast(state.data.second)
                 }
             }
         }
