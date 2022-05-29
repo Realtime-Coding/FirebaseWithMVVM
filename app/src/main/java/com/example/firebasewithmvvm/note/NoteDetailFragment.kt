@@ -60,8 +60,10 @@ class NoteDetailFragment : Fragment() {
                 }
                 is UiState.Success -> {
                     binding.progressBar.hide()
-                    objNote = state.data.first
                     toast(state.data.second)
+                    objNote = state.data.first
+                    isMakeEnableUI(false)
+                    binding.edit.show()
                 }
             }
         }
@@ -210,12 +212,12 @@ class NoteDetailFragment : Fragment() {
     }
 
     private fun getNote(): Note {
-        val tags = binding.tags.children.toList().map { (it as Chip).text.toString() }.toMutableList()
+        //val tags = binding.tags.children.toList().map { (it as Chip).text.toString() }.toMutableList()
         return Note(
             id = objNote?.id ?: "",
             title = binding.title.text.toString(),
             description = binding.description.text.toString(),
-            tags = tags,
+            tags = tagsList,
             date = Date()
         )
     }
