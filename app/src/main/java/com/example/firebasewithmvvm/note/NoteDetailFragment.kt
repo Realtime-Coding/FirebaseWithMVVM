@@ -1,5 +1,6 @@
 package com.example.firebasewithmvvm.note
 
+import android.app.ActionBar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.core.view.children
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.firebasewithmvvm.R
@@ -26,6 +28,7 @@ class NoteDetailFragment : Fragment() {
     lateinit var binding: FragmentNoteDetailBinding
     val viewModel: NoteViewModel by viewModels()
     var objNote: Note? = null
+    var tagsList: MutableList<String> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,7 +83,8 @@ class NoteDetailFragment : Fragment() {
         objNote?.let { note ->
             binding.title.setText(note.title)
             binding.date.setText(sdf.format(note.date))
-            addTags(note.tags)
+            tagsList = note.tags
+            addTags(tagsList)
             binding.description.setText(note.description)
             binding.update.show()
             binding.delete.show()
@@ -88,7 +92,6 @@ class NoteDetailFragment : Fragment() {
         } ?: run {
             binding.title.setText("")
             binding.date.setText(sdf.format(Date()))
-            binding.tags.removeAllViews()
             binding.description.setText("")
             binding.update.hide()
             binding.delete.hide()
@@ -97,8 +100,17 @@ class NoteDetailFragment : Fragment() {
         binding.back.setOnClickListener {
             findNavController().navigateUp()
         }
+        binding.title.setOnClickListener {
+            isMakeEnableUI(true)
+        }
         binding.description.setOnClickListener {
             isMakeEnableUI(true)
+        }
+        binding.delete.setOnClickListener {
+            toast("delete Note")
+        }
+        binding.addTagLl.setOnClickListener {
+           showAddTagDialog()
         }
         binding.update.setOnClickListener {
             if (validation()) {
@@ -109,30 +121,49 @@ class NoteDetailFragment : Fragment() {
                 }
             }
         }
-        binding.delete.setOnClickListener {
-            toast("delete Note")
+        binding.title.doAfterTextChanged {
+            binding.update.show()
         }
-        binding.addTagLl.setOnClickListener {
-            val dialog = requireContext().createDialog(R.layout.add_tag_dialog,true)
-            val button = dialog.findViewById<MaterialButton>(R.id.tag_dialog_add)
-            val editText = dialog.findViewById<EditText>(R.id.tag_dialog_et)
-            button.setOnClickListener {
-                if (editText.text.toString().isNullOrEmpty()){
-                    toast(getString(R.string.error_tag_text))
-                }else{
-                    objNote?.tags?.add(editText.text.toString())
-                    binding.tags.addChip(editText.text.toString(),true)
-                }
-            }
+        binding.description.doAfterTextChanged {
+            binding.update.show()
         }
     }
 
+    private fun showAddTagDialog(){
+        val dialog = requireContext().createDialog(R.layout.add_tag_dialog, true)
+        val button = dialog.findViewById<MaterialButton>(R.id.tag_dialog_add)
+        val editText = dialog.findViewById<EditText>(R.id.tag_dialog_et)
+        button.setOnClickListener {
+            if (editText.text.toString().isNullOrEmpty()) {
+                toast(getString(R.string.error_tag_text))
+            } else {
+                val text = editText.text.toString()
+                if (tagsList.size == 0) binding.tags.removeAllViews()
+                tagsList.add(text)
+                binding.tags.addChip(text, true) {
+                    tagsList.forEachIndexed { index, tag ->
+                        if (text.equals(tag)) {
+                            tagsList.removeAt(index)
+                            binding.tags.removeViewAt(index)
+                        }
+                    }
+                }
+                binding.update.show()
+                dialog.dismiss()
+            }
+        }
+        dialog.show()
+    }
+
     private fun addTags(note: MutableList<String>) {
-        binding.tags.apply {
-            note.forEachIndexed { index, tag ->
-                addChip(tag, true) {
-                    note.removeAt(index)
-                    this.removeViewAt(index)
+        if (note.size > 0) {
+            binding.tags.apply {
+                removeAllViews()
+                note.forEachIndexed { index, tag ->
+                    addChip(tag, true) {
+                        note.removeAt(index)
+                        this.removeViewAt(index)
+                    }
                 }
             }
         }
