@@ -134,32 +134,9 @@
         app:layout_constraintStart_toStartOf="@+id/date"
         app:layout_constraintTop_toTopOf="@+id/add_tag_ll">
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Design"
-            android:textAppearance="@style/TextStyle"
-            android:textColor="@color/black70"
-            app:chipCornerRadius="6dp"
-            app:chipMinTouchTargetSize="8dp" />
-
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Productivity"
-            android:textAppearance="@style/TextStyle"
-            android:textColor="@color/black70"
-            app:chipCornerRadius="6dp"
-            app:chipMinTouchTargetSize="8dp" />
-
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+1"
-            android:textAppearance="@style/TextStyle"
-            android:textColor="@color/black70"
-            app:chipCornerRadius="6dp"
-            app:chipMinTouchTargetSize="8dp" />
+        <include layout="@layout/item_chip"/>
+        <include layout="@layout/item_chip"/>
+        <include layout="@layout/item_chip"/>
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -183,5 +160,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/middle_divider" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/black"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasewithmvvm.data.model.Note
 import com.example.firebasewithmvvm.databinding.ItemNoteLayoutBinding
+import com.example.firebasewithmvvm.util.addChip
 import java.text.SimpleDateFormat
 
 class NoteListingAdapter(
@@ -40,8 +41,16 @@ class NoteListingAdapter(
 
     inner class MyViewHolder(val binding: ItemNoteLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Note){
-            binding.date.setText(sdf.format(item.date))
             binding.title.setText(item.title)
+            binding.date.setText(sdf.format(item.date))
+            binding.tags.apply {
+                if (item.tags.size > 2){
+                    item.tags.subList(0,2).forEach { tag -> addChip(tag)  }
+                    addChip("+${item.tags.size - 2}")
+                }else{
+                    item.tags.forEach { tag -> addChip(tag) }
+                }
+            }
             binding.desc.setText(item.description)
             binding.itemLayout.setOnClickListener { onItemClicked.invoke(adapterPosition,item) }
         }

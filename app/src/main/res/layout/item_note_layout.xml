@@ -44,29 +44,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title">
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Design"
-                android:textAppearance="@style/TextStyle"
-                android:textColor="@color/black70"
-                app:chipCornerRadius="6dp" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Productivity"
-                android:textAppearance="@style/TextStyle"
-                android:textColor="@color/black70"
-                app:chipCornerRadius="6dp" />
-
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+1"
-                android:textAppearance="@style/TextStyle"
-                android:textColor="@color/black70"
-                app:chipCornerRadius="6dp" />
+            <include layout="@layout/item_chip"/>
+            <include layout="@layout/item_chip"/>
+            <include layout="@layout/item_chip"/>
 
         </com.google.android.material.chip.ChipGroup>
 
