@@ -86,14 +86,16 @@ class NoteDetailFragment : Fragment() {
             tagsList = note.tags
             addTags(tagsList)
             binding.description.setText(note.description)
-            binding.update.show()
+            binding.done.show()
+            binding.edit.show()
             binding.delete.show()
             isMakeEnableUI(false)
         } ?: run {
             binding.title.setText("")
             binding.date.setText(sdf.format(Date()))
             binding.description.setText("")
-            binding.update.hide()
+            binding.done.hide()
+            binding.edit.hide()
             binding.delete.hide()
             isMakeEnableUI(true)
         }
@@ -112,7 +114,12 @@ class NoteDetailFragment : Fragment() {
         binding.addTagLl.setOnClickListener {
            showAddTagDialog()
         }
-        binding.update.setOnClickListener {
+        binding.edit.setOnClickListener {
+            isMakeEnableUI(true)
+            binding.edit.hide()
+            binding.title.requestFocus()
+        }
+        binding.done.setOnClickListener {
             if (validation()) {
                 if (objNote == null) {
                     viewModel.addNote(getNote())
@@ -122,10 +129,12 @@ class NoteDetailFragment : Fragment() {
             }
         }
         binding.title.doAfterTextChanged {
-            binding.update.show()
+            binding.done.show()
+            binding.edit.hide()
         }
         binding.description.doAfterTextChanged {
-            binding.update.show()
+            binding.done.show()
+            binding.edit.hide()
         }
     }
 
@@ -148,7 +157,8 @@ class NoteDetailFragment : Fragment() {
                         }
                     }
                 }
-                binding.update.show()
+                binding.done.show()
+                binding.edit.hide()
                 dialog.dismiss()
             }
         }
@@ -161,8 +171,10 @@ class NoteDetailFragment : Fragment() {
                 removeAllViews()
                 note.forEachIndexed { index, tag ->
                     addChip(tag, true) {
-                        note.removeAt(index)
-                        this.removeViewAt(index)
+                        if (isEnabled) {
+                            note.removeAt(index)
+                            this.removeViewAt(index)
+                        }
                     }
                 }
             }
