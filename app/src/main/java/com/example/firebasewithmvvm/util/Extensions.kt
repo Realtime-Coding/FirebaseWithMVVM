@@ -1,7 +1,10 @@
 package com.example.firebasewithmvvm.util
 
-import android.view.LayoutInflater
-import android.view.View
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.view.*
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -45,4 +48,18 @@ fun ChipGroup.addChip(
         chip.setOnCloseIconClickListener(closeIconListener)
     }
     addView(chip)
+}
+
+fun Context.createDialog(layout: Int, cancelable: Boolean): Dialog {
+    val dialog = Dialog(this, android.R.style.Theme_Dialog)
+    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+    dialog.setContentView(layout)
+    dialog.window?.setGravity(Gravity.CENTER)
+    dialog.window?.setLayout(
+        WindowManager.LayoutParams.MATCH_PARENT,
+        WindowManager.LayoutParams.WRAP_CONTENT
+    )
+    dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    dialog.setCancelable(cancelable)
+    return dialog
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.core.view.children
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,7 @@ import com.example.firebasewithmvvm.R
 import com.example.firebasewithmvvm.data.model.Note
 import com.example.firebasewithmvvm.databinding.FragmentNoteDetailBinding
 import com.example.firebasewithmvvm.util.*
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -28,7 +30,7 @@ class NoteDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNoteDetailBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -78,14 +80,7 @@ class NoteDetailFragment : Fragment() {
         objNote?.let { note ->
             binding.title.setText(note.title)
             binding.date.setText(sdf.format(note.date))
-            binding.tags.apply {
-                note.tags.forEachIndexed { index, tag ->
-                    addChip(tag,true) {
-                        note.tags.removeAt(index)
-                        this.removeViewAt(index)
-                    }
-                }
-            }
+            addTags(note.tags)
             binding.description.setText(note.description)
             binding.update.show()
             binding.delete.show()
@@ -116,6 +111,30 @@ class NoteDetailFragment : Fragment() {
         }
         binding.delete.setOnClickListener {
             toast("delete Note")
+        }
+        binding.addTagLl.setOnClickListener {
+            val dialog = requireContext().createDialog(R.layout.add_tag_dialog,true)
+            val button = dialog.findViewById<MaterialButton>(R.id.tag_dialog_add)
+            val editText = dialog.findViewById<EditText>(R.id.tag_dialog_et)
+            button.setOnClickListener {
+                if (editText.text.toString().isNullOrEmpty()){
+                    toast(getString(R.string.error_tag_text))
+                }else{
+                    objNote?.tags?.add(editText.text.toString())
+                    binding.tags.addChip(editText.text.toString(),true)
+                }
+            }
+        }
+    }
+
+    private fun addTags(note: MutableList<String>) {
+        binding.tags.apply {
+            note.forEachIndexed { index, tag ->
+                addChip(tag, true) {
+                    note.removeAt(index)
+                    this.removeViewAt(index)
+                }
+            }
         }
     }
 

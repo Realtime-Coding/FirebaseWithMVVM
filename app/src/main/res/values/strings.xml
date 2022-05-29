@@ -6,4 +6,5 @@
     <string name="note_detail_desc_placeholder">You’ve gotten a handle on what an Observable is, how to create one, how to subscribe to it, and how to dispose of things when you’re done. Observables are a fundamental part of RxJava, but a common need when developing apps is to manually add new values onto an Observable at runtime that will then be emitted to subscribers. What you want is something that can act as both an Observable and as an observer. And that something is called a subject.</string>
     <string name="error_description">Description missing</string>
     <string name="error_title">Title missing</string>
+    <string name="error_tag_text">Enter text</string>
 </resources>

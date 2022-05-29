@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.222" />
         <entry key="app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.212" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
+        <entry key="app/src/main/res/layout/add_tag_dialog.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/fragment_note_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_note_listing.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/item_chip.xml" value="0.29322916666666665" />
