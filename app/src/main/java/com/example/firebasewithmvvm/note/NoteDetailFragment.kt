@@ -72,6 +72,8 @@ class NoteDetailFragment : Fragment() {
                 is UiState.Success -> {
                     binding.progressBar.hide()
                     toast(state.data)
+                    isMakeEnableUI(false)
+                    binding.edit.show()
                 }
             }
         }
