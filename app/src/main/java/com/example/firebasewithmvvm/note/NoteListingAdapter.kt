@@ -45,16 +45,16 @@ class NoteListingAdapter(
             binding.title.setText(item.title)
             binding.date.setText(sdf.format(item.date))
             binding.tags.apply {
-                removeAllViews()
                 if (item.tags.isNullOrEmpty()){
                     hide()
-                    return
-                }
-                if (item.tags.size > 2){
-                    item.tags.subList(0,2).forEach { tag -> addChip(tag)  }
-                    addChip("+${item.tags.size - 2}")
-                }else{
-                    item.tags.forEach { tag -> addChip(tag) }
+                }else {
+                    removeAllViews()
+                    if (item.tags.size > 2) {
+                        item.tags.subList(0, 2).forEach { tag -> addChip(tag) }
+                        addChip("+${item.tags.size - 2}")
+                    } else {
+                        item.tags.forEach { tag -> addChip(tag) }
+                    }
                 }
             }
             binding.desc.apply {
