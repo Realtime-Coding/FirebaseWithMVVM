@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_clr"
     android:padding="16dp"
     tools:context=".note.NoteDetailFragment">
 
@@ -72,116 +73,136 @@
         app:layout_constraintTop_toBottomOf="@+id/back_text"
         tools:layout_editor_absoluteX="16dp" />
 
-    <EditText
-        android:id="@+id/title"
-        style="@style/TitleStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_marginTop="22dp"
-        android:hint="Title"
-        android:text=""
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_divider" />
-
-    <TextView
-        android:id="@+id/date_label"
-        style="@style/TextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Last Modified"
-        android:textColor="@color/black70"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <TextView
-        android:id="@+id/date"
-        style="@style/TextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/date_label"
-        app:layout_constraintStart_toEndOf="@+id/date_label"
-        app:layout_constraintTop_toTopOf="@+id/date_label" />
-
-    <View
-        android:id="@+id/space"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content_nsv"
         android:layout_width="match_parent"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toBottomOf="@+id/top_divider">
 
-    <LinearLayout
-        android:id="@+id/add_tag_ll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tags">
-
-        <TextView
-            android:id="@+id/tag_label"
-            style="@style/TextStyle"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tags"
-            android:textColor="@color/black70"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            android:paddingBottom="36dp">
 
-        <ImageView
-            android:id="@+id/tag_add"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_baseline_add_circle_24"
-            app:layout_constraintEnd_toStartOf="@+id/done"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black" />
+            <EditText
+                android:id="@+id/title"
+                style="@style/TitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Title"
+                android:text=""
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/date_label"
+                style="@style/TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Last Modified"
+                android:textColor="@color/black70"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/tags"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/date"
-        app:layout_constraintTop_toBottomOf="@+id/space">
+            <TextView
+                android:id="@+id/date"
+                style="@style/TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/date_label"
+                app:layout_constraintStart_toEndOf="@+id/date_label"
+                app:layout_constraintTop_toTopOf="@+id/date_label" />
 
-        <include
-            layout="@layout/item_chip"
-            android:visibility="invisible"/>
+            <View
+                android:id="@+id/space"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date" />
 
-    </com.google.android.material.chip.ChipGroup>
+            <LinearLayout
+                android:id="@+id/add_tag_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tags">
 
-    <View
-        android:id="@+id/middle_divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="22dp"
-        android:background="@color/black10"
-        app:layout_constraintTop_toBottomOf="@+id/tags"
-        tools:layout_editor_absoluteX="16dp" />
+                <TextView
+                    android:id="@+id/tag_label"
+                    style="@style/TextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tags"
+                    android:textColor="@color/black70"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <EditText
-        android:id="@+id/description"
-        style="@style/DescStyle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="22dp"
-        android:background="@color/white"
-        android:gravity="top|left"
-        android:hint="Description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/middle_divider" />
+                <ImageView
+                    android:id="@+id/tag_add"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_baseline_add_circle_24"
+                    app:layout_constraintEnd_toStartOf="@+id/done"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
+
+            </LinearLayout>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/tags"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/date"
+                app:layout_constraintTop_toBottomOf="@+id/space">
+
+                <include
+                    layout="@layout/item_chip"
+                    android:visibility="invisible" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <View
+                android:id="@+id/middle_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="22dp"
+                android:background="@color/black10"
+                app:layout_constraintTop_toBottomOf="@+id/tags"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <EditText
+                android:id="@+id/description"
+                style="@style/DescStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:background="@android:color/transparent"
+                android:gravity="top|left"
+                android:hint="Description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/middle_divider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/progressBar"
