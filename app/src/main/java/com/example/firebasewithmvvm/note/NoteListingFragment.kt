@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.firebasewithmvvm.R
+import com.example.firebasewithmvvm.data.model.Note
 import com.example.firebasewithmvvm.databinding.FragmentNoteListingBinding
 import com.example.firebasewithmvvm.util.UiState
 import com.example.firebasewithmvvm.util.hide
@@ -22,6 +23,8 @@ class NoteListingFragment : Fragment() {
     val TAG: String = "NoteListingFragment"
     lateinit var binding: FragmentNoteListingBinding
     val viewModel: NoteViewModel by viewModels()
+    var deletePosition: Int = -1
+    var list: MutableList<Note> = arrayListOf()
     val adapter by lazy {
         NoteListingAdapter(
             onItemClicked = { pos, item ->
@@ -37,7 +40,8 @@ class NoteListingFragment : Fragment() {
                 })
             },
             onDeleteClicked = { pos, item ->
-
+                deletePosition = pos
+                viewModel.deleteNote(item)
             }
         )
     }
@@ -70,7 +74,27 @@ class NoteListingFragment : Fragment() {
                 }
                 is UiState.Success -> {
                     binding.progressBar.hide()
-                    adapter.updateList(state.data.toMutableList())
+                    list = state.data.toMutableList()
+                    adapter.updateList(list)
+                }
+            }
+        }
+        viewModel.deleteNote.observe(viewLifecycleOwner) { state ->
+            when(state){
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(state.error)
+                }
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    toast(state.data)
+                    if (deletePosition != -1) {
+                        list.removeAt(deletePosition)
+                        adapter.updateList(list)
+                    }
                 }
             }
         }
