@@ -10,12 +10,12 @@ I will cover following topics
 - MVVM Implementation
 - Jetpack Navigation Component (To create navigation between fragment and help us to manager the back stack without worry about it)
 - Dagger Hilt
-- Resource Class to Manager Ui States
-- Listing Of Notes in Recycer View
+- Resource Class to Manage Ui States
+- Listing Of Notes in RecyclerView
 - Create Note
 - Update Note
 - Delete Note
-- Refactore and Redesigned to Project to New 
+- Refactoring and Redesigned to Project to New 
 - Lambda functions
 
 Extra (Pending)
