@@ -42,9 +42,9 @@ class NoteListingAdapter(
         fun bind(item: Note){
             binding.noteIdValue.setText(item.id)
             binding.msg.setText(item.text)
-            binding.edit.setOnClickListener { onEditClicked.invoke(adapterPosition,item) }
-            binding.delete.setOnClickListener { onDeleteClicked.invoke(adapterPosition,item) }
-            binding.itemLayout.setOnClickListener { onItemClicked.invoke(adapterPosition,item) }
+            binding.edit.setOnClickListener { onEditClicked.invoke(bindingAdapterPosition,item) }
+            binding.delete.setOnClickListener { onDeleteClicked.invoke(bindingAdapterPosition,item) }
+            binding.itemLayout.setOnClickListener { onItemClicked.invoke(bindingAdapterPosition,item) }
         }
     }
 }
