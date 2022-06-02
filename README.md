@@ -25,6 +25,15 @@ Extra (Pending)
 - Session Handling
 - Logout
 
+
+## Branches
+- **master** has complete code with old design.
+- **feature/navigation-component** has related to navigation component
+- **dagger-hilt-impl** has related to dagger hilt implementation
+- **feature/add-note** has related to add note
+- **feature/delete-note** has related to delete note
+- **modification/design** has complete code with new design, refacotred code and modification in logic etc.
+
 ### Youtube Playlist
 [Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
 
