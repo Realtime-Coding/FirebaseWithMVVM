@@ -15,7 +15,7 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - [Add Note & Listing Notes in RecyclerView](https://www.youtube.com/watch?v=7ZNk87k441U&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=10)
 - [Update Note](https://www.youtube.com/watch?v=oHvPmOEKpjc&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=11)
 - [Delete Note](https://www.youtube.com/watch?v=ngvPIiDRRv0&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=12)
-- [Migrating old design to new](https://www.youtube.com/watch?v=DYCWfCOohsQ&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=14)
+- [Migrating old design to new (Branch: modification/design)](https://www.youtube.com/watch?v=DYCWfCOohsQ&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=14)
 
 
 Extra (Pending)
