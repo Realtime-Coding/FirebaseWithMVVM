@@ -2,7 +2,7 @@
 
 In this project we will learn about Firebase Implementation with MVVM Architecture. It is a basic level Course and will go with project based approach so can understand better that how the things are working.
 
-I will cover following topics
+## Topics
 
 - [Introduction](https://www.youtube.com/watch?v=MNomjZf-8C8&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=1&t=71s)
 - [Github Integration](https://www.youtube.com/watch?v=-os2YCijeIA&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=2)
@@ -17,7 +17,6 @@ I will cover following topics
 - [Delete Note](https://www.youtube.com/watch?v=ngvPIiDRRv0&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=12)
 - [Migrating old design to new](https://www.youtube.com/watch?v=DYCWfCOohsQ&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=14)
 
-[Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
 
 Extra (Pending)
 - Authentication with Email/Password
@@ -25,6 +24,22 @@ Extra (Pending)
 - Upload Image to Firestorage
 - Session Handling
 - Logout
+
+### Youtube Playlist
+[Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
+
+## Demo
+
+<table>
+  <tr>
+    <td>Note Listing Screen</td>
+     <td>Note Detail/Create/Update Screen</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/note-taking-listing.jpg" width=270 height=520></td>
+    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/note-taking-detail.jpg" width=270 height=520></td>
+  </tr>
+ </table>
 
 
 
