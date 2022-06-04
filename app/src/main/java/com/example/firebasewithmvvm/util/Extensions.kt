@@ -2,6 +2,7 @@ package com.example.firebasewithmvvm.util
 
 import android.app.Dialog
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.*
@@ -63,3 +64,9 @@ fun Context.createDialog(layout: Int, cancelable: Boolean): Dialog {
     dialog.setCancelable(cancelable)
     return dialog
 }
+
+val Int.dpToPx: Int
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+val Int.pxToDp: Int
+    get() = (this / Resources.getSystem().displayMetrics.density).toInt()

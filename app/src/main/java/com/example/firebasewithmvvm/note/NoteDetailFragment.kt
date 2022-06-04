@@ -108,7 +108,8 @@ class NoteDetailFragment : Fragment() {
 
     private fun updateUI() {
         val sdf = SimpleDateFormat("dd MMM yyyy . hh:mm a")
-        objNote = arguments?.getParcelable("note") //If user click on the note from listing screen then in that case we pass the object
+        objNote = arguments?.getParcelable("note")
+        binding.tags.layoutParams.height = 40.dpToPx
         objNote?.let { note ->
             binding.title.setText(note.title)
             binding.date.setText(sdf.format(note.date))
@@ -119,7 +120,7 @@ class NoteDetailFragment : Fragment() {
             binding.edit.show()
             binding.delete.show()
             isMakeEnableUI(false)
-        } ?: run { //If no note exists then It's mean user want to create a new note
+        } ?: run {
             binding.title.setText("")
             binding.date.setText(sdf.format(Date()))
             binding.description.setText("")
@@ -177,15 +178,20 @@ class NoteDetailFragment : Fragment() {
                 toast(getString(R.string.error_tag_text))
             } else {
                 val text = editText.text.toString()
-                if (tagsList.size == 0) binding.tags.removeAllViews()
                 tagsList.add(text)
-                binding.tags.addChip(text, true) {
-                    tagsList.forEachIndexed { index, tag ->
-                        if (text.equals(tag)) {
-                            tagsList.removeAt(index)
-                            binding.tags.removeViewAt(index)
+                binding.tags.apply {
+                    addChip(text, true) {
+                        tagsList.forEachIndexed { index, tag ->
+                            if (text.equals(tag)) {
+                                tagsList.removeAt(index)
+                                binding.tags.removeViewAt(index)
+                            }
+                        }
+                        if (tagsList.size == 0){
+                            layoutParams.height = 40.dpToPx
                         }
                     }
+                    layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
                 }
                 binding.done.show()
                 binding.edit.hide()
@@ -211,7 +217,6 @@ class NoteDetailFragment : Fragment() {
         }
     }
 
-    //Make Ui enable when user want to update or create note otherwsie disable Ui if user want to view note
     private fun isMakeEnableUI(isDisable: Boolean = false) {
         binding.title.isEnabled = isDisable
         binding.date.isEnabled = isDisable
@@ -234,7 +239,6 @@ class NoteDetailFragment : Fragment() {
     }
 
     private fun getNote(): Note {
-        //val tags = binding.tags.children.toList().map { (it as Chip).text.toString() }.toMutableList()
         return Note(
             id = objNote?.id ?: "",
             title = binding.title.text.toString(),
