@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.FirebaseWithMVVM" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.FirebaseWithMVVM" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,4 +13,48 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="TitilliumWebBold">
+        <item name="android:fontFamily">@font/titillium_web_bold</item>
+    </style>
+
+    <style name="TitilliumWebBlack">
+        <item name="android:fontFamily">@font/titillium_web_black</item>
+    </style>
+
+    <style name="TitilliumWebLight">
+        <item name="android:fontFamily">@font/titillium_web_light</item>
+    </style>
+
+    <style name="TitilliumWebRegular">
+        <item name="android:fontFamily">@font/titillium_web_regular</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:fontFamily">@font/titillium_web_bold</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="SubTitleStyle">
+        <item name="android:fontFamily">@font/titillium_web_bold</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="DescStyle">
+        <item name="android:fontFamily">@font/titillium_web_regular</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:fontFamily">@font/titillium_web_regular</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="ChipTextStyle">
+        <item name="android:fontFamily">@font/titillium_web_regular</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
 </resources>

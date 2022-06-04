@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasewithmvvm.data.model.Note
 import com.example.firebasewithmvvm.databinding.ItemNoteLayoutBinding
+import com.example.firebasewithmvvm.util.addChip
+import com.example.firebasewithmvvm.util.hide
+import java.text.SimpleDateFormat
 
 class NoteListingAdapter(
     val onItemClicked: (Int, Note) -> Unit,
@@ -12,6 +15,7 @@ class NoteListingAdapter(
     val onDeleteClicked: (Int,Note) -> Unit
 ) : RecyclerView.Adapter<NoteListingAdapter.MyViewHolder>() {
 
+    val sdf = SimpleDateFormat("dd MMM yyyy")
     private var list: MutableList<Note> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -40,11 +44,29 @@ class NoteListingAdapter(
 
     inner class MyViewHolder(val binding: ItemNoteLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Note){
-            binding.noteIdValue.setText(item.id)
-            binding.msg.setText(item.text)
-            binding.edit.setOnClickListener { onEditClicked.invoke(bindingAdapterPosition,item) }
-            binding.delete.setOnClickListener { onDeleteClicked.invoke(bindingAdapterPosition,item) }
-            binding.itemLayout.setOnClickListener { onItemClicked.invoke(bindingAdapterPosition,item) }
+            binding.title.setText(item.title)
+            binding.date.setText(sdf.format(item.date))
+            binding.tags.apply {
+                if (item.tags.isNullOrEmpty()){
+                    hide()
+                }else {
+                    removeAllViews()
+                    if (item.tags.size > 2) {
+                        item.tags.subList(0, 2).forEach { tag -> addChip(tag) }
+                        addChip("+${item.tags.size - 2}")
+                    } else {
+                        item.tags.forEach { tag -> addChip(tag) }
+                    }
+                }
+            }
+            binding.desc.apply {
+                if (item.description.length > 120){
+                    text = "${item.description.substring(0,120)}..."
+                }else{
+                    text = item.description
+                }
+            }
+            binding.itemLayout.setOnClickListener { onItemClicked.invoke(adapterPosition,item) }
         }
     }
 }
