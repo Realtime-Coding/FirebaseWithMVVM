@@ -16,6 +16,8 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - [Update Note](https://www.youtube.com/watch?v=oHvPmOEKpjc&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=11)
 - [Delete Note](https://www.youtube.com/watch?v=ngvPIiDRRv0&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=12)
 - [Migrating old design to new (Branch: modification/design)](https://www.youtube.com/watch?v=DYCWfCOohsQ&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=14)
+- [Explaining old design to new design (Branch: modification/design)](https://www.youtube.com/watch?v=dDvcGichH04&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=15)
+
 
 
 Extra (Pending)
@@ -27,11 +29,12 @@ Extra (Pending)
 
 
 ## Branches
-- **master** has complete code with old design.
+- **master** has complete code with new design.
 - **feature/navigation-component** has related to navigation component
 - **dagger-hilt-impl** has related to dagger hilt implementation
 - **feature/add-note** has related to add note
 - **feature/delete-note** has related to delete note
+- **old-design** has complete old code with old design.
 - **modification/design** has complete code with new design, refacotred code and modification in logic etc.
 
 ### Youtube Playlist
