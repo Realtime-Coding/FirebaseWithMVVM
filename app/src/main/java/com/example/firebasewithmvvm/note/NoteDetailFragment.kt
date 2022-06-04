@@ -63,6 +63,8 @@ class NoteDetailFragment : Fragment() {
                     toast(state.data.second)
                     objNote = state.data.first
                     isMakeEnableUI(false)
+                    binding.done.hide()
+                    binding.delete.show()
                     binding.edit.show()
                 }
             }
@@ -106,7 +108,7 @@ class NoteDetailFragment : Fragment() {
 
     private fun updateUI() {
         val sdf = SimpleDateFormat("dd MMM yyyy . hh:mm a")
-        objNote = arguments?.getParcelable("note")
+        objNote = arguments?.getParcelable("note") //If user click on the note from listing screen then in that case we pass the object
         objNote?.let { note ->
             binding.title.setText(note.title)
             binding.date.setText(sdf.format(note.date))
@@ -117,7 +119,7 @@ class NoteDetailFragment : Fragment() {
             binding.edit.show()
             binding.delete.show()
             isMakeEnableUI(false)
-        } ?: run {
+        } ?: run { //If no note exists then It's mean user want to create a new note
             binding.title.setText("")
             binding.date.setText(sdf.format(Date()))
             binding.description.setText("")
@@ -209,6 +211,7 @@ class NoteDetailFragment : Fragment() {
         }
     }
 
+    //Make Ui enable when user want to update or create note otherwsie disable Ui if user want to view note
     private fun isMakeEnableUI(isDisable: Boolean = false) {
         binding.title.isEnabled = isDisable
         binding.date.isEnabled = isDisable
