@@ -70,4 +70,5 @@ dependencies {
 
     //Firebase
     implementation 'com.google.firebase:firebase-firestore:24.1.2'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
 }

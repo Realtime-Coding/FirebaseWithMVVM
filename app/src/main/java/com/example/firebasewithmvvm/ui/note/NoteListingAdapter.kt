@@ -1,4 +1,4 @@
-package com.example.firebasewithmvvm.note
+package com.example.firebasewithmvvm.ui.note
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,9 +10,7 @@ import com.example.firebasewithmvvm.util.hide
 import java.text.SimpleDateFormat
 
 class NoteListingAdapter(
-    val onItemClicked: (Int, Note) -> Unit,
-    val onEditClicked: (Int, Note) -> Unit,
-    val onDeleteClicked: (Int,Note) -> Unit
+    val onItemClicked: (Int, Note) -> Unit
 ) : RecyclerView.Adapter<NoteListingAdapter.MyViewHolder>() {
 
     val sdf = SimpleDateFormat("dd MMM yyyy")

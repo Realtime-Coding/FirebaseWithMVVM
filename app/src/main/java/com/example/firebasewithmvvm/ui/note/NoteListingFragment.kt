@@ -1,4 +1,4 @@
-package com.example.firebasewithmvvm.note
+package com.example.firebasewithmvvm.ui.note
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.firebasewithmvvm.R
-import com.example.firebasewithmvvm.databinding.FragmentNoteDetailBinding
 import com.example.firebasewithmvvm.databinding.FragmentNoteListingBinding
 import com.example.firebasewithmvvm.util.UiState
 import com.example.firebasewithmvvm.util.hide

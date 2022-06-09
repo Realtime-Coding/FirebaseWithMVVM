@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/noteListingFragment">
+    app:startDestination="@id/registerFragment">
 
     <fragment
         android:id="@+id/noteListingFragment"
-        android:name="com.example.firebasewithmvvm.note.NoteListingFragment"
+        android:name="com.example.firebasewithmvvm.ui.note.NoteListingFragment"
         android:label="fragment_note_listing"
         tools:layout="@layout/fragment_note_listing" >
         <action
@@ -17,8 +17,17 @@
 
     <fragment
         android:id="@+id/noteDetailFragment"
-        android:name="com.example.firebasewithmvvm.note.NoteDetailFragment"
+        android:name="com.example.firebasewithmvvm.ui.note.NoteDetailFragment"
         android:label="fragment_note_detail"
         tools:layout="@layout/fragment_note_detail" />
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.firebasewithmvvm.ui.auth.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_noteListingFragment"
+            app:destination="@id/noteListingFragment" />
+    </fragment>
 
 </navigation>
