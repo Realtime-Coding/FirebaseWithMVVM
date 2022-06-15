@@ -3,10 +3,7 @@ package com.example.firebasewithmvvm.data.repository
 import com.example.firebasewithmvvm.data.model.User
 import com.example.firebasewithmvvm.util.FireStoreCollection
 import com.example.firebasewithmvvm.util.UiState
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AuthRepositoryImp(
@@ -76,8 +73,18 @@ class AuthRepositoryImp(
             }
     }
 
-    override fun loginUser(user: User, result: (UiState<String>) -> Unit) {
-
+    override fun loginUser(
+        email: String,
+        password: String,
+        result: (UiState<String>) -> Unit) {
+        auth.signInWithEmailAndPassword(email,password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    result.invoke(UiState.Success("Login successfully!"))
+                }
+            }.addOnFailureListener {
+                result.invoke(UiState.Failure("Authentication failed, Check email and password"))
+            }
     }
 
     override fun forgotPassword(user: User, result: (UiState<String>) -> Unit) {
