@@ -211,10 +211,7 @@
             android:textAllCaps="false"
             android:textAppearance="@style/SubTitleStyle"
             android:textColor="@color/white"
-            app:backgroundTint="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:backgroundTint="@color/black" />
 
         <ProgressBar
             android:id="@+id/register_progress"
