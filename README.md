@@ -17,11 +17,13 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - [Delete Note](https://www.youtube.com/watch?v=ngvPIiDRRv0&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=12)
 - [Migrating old design to new (Branch: modification/design)](https://www.youtube.com/watch?v=DYCWfCOohsQ&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=14)
 - [Explaining old design to new design (Branch: modification/design)](https://www.youtube.com/watch?v=dDvcGichH04&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=15)
+- [Divider Line Overlapping Chipgroup Ui Bug (Branch: modification/design)](https://www.youtube.com/watch?v=T9mk9ivhIOw&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=16)
+- [Register with email/password (Branch: modification/design)](https://www.youtube.com/watch?v=xsEDL0Y3Ays&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=17)
+- [Login with email/password (Branch: modification/design)](https://www.youtube.com/watch?v=r48IHaYEJTk&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=18)
 
 
 
 Extra (Pending)
-- Authentication with Email/Password
 - Forgot Password
 - Upload Image to Firestorage
 - Session Handling
@@ -36,6 +38,8 @@ Extra (Pending)
 - **feature/delete-note** has related to delete note
 - **old-design** has complete old code with old design.
 - **modification/design** has complete code with new design, refacotred code and modification in logic etc.
+- **feature/regsiter** has related to register with email and password.
+- **feature/login** has related to register with email and password.
 
 ### Youtube Playlist
 [Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
