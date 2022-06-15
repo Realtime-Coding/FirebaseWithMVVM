@@ -7,4 +7,11 @@
     <string name="error_description">Description missing</string>
     <string name="error_title">Title missing</string>
     <string name="error_tag_text">Enter text</string>
+    <string name="enter_first_name">Enter first name</string>
+    <string name="enter_last_name">Enter last name</string>
+    <string name="enter_job_title">Enter job title</string>
+    <string name="enter_email">Enter email address</string>
+    <string name="invalid_email">Invalid email entered</string>
+    <string name="enter_password">Enter password</string>
+    <string name="invalid_password">Your password must be at least 8 characters</string>
 </resources>

@@ -1,13 +1,11 @@
-package com.example.firebasewithmvvm.note
+package com.example.firebasewithmvvm.ui.note
 
-import android.app.ActionBar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.core.view.children
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,7 +14,6 @@ import com.example.firebasewithmvvm.data.model.Note
 import com.example.firebasewithmvvm.databinding.FragmentNoteDetailBinding
 import com.example.firebasewithmvvm.util.*
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
