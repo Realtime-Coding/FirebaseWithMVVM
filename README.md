@@ -39,7 +39,7 @@ Extra (Pending)
 - **old-design** has complete old code with old design.
 - **modification/design** has complete code with new design, refacotred code and modification in logic etc.
 - **feature/regsiter** has related to register with email and password.
-- **feature/login** has related to register with email and password.
+- **feature/login** has related to login with email and password.
 
 ### Youtube Playlist
 [Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
