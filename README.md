@@ -18,8 +18,8 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - [Migrating old design to new (Branch: modification/design)](https://www.youtube.com/watch?v=DYCWfCOohsQ&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=14)
 - [Explaining old design to new design (Branch: modification/design)](https://www.youtube.com/watch?v=dDvcGichH04&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=15)
 - [Divider Line Overlapping Chipgroup Ui Bug (Branch: modification/design)](https://www.youtube.com/watch?v=T9mk9ivhIOw&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=16)
-- [Register with email/password (Branch: modification/design)](https://www.youtube.com/watch?v=xsEDL0Y3Ays&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=17)
-- [Login with email/password (Branch: modification/design)](https://www.youtube.com/watch?v=r48IHaYEJTk&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=18)
+- [Register with email/password (Branch: feature/register)](https://www.youtube.com/watch?v=xsEDL0Y3Ays&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=17)
+- [Login with email/password (Branch: feature/login)](https://www.youtube.com/watch?v=r48IHaYEJTk&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=18)
 
 
 
