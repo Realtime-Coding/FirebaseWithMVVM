@@ -20,14 +20,7 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - [Divider Line Overlapping Chipgroup Ui Bug (Branch: modification/design)](https://www.youtube.com/watch?v=T9mk9ivhIOw&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=16)
 - [Register with email/password (Branch: feature/register)](https://www.youtube.com/watch?v=xsEDL0Y3Ays&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=17)
 - [Login with email/password (Branch: feature/login)](https://www.youtube.com/watch?v=r48IHaYEJTk&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=18)
-
-
-
-Extra (Pending)
-- Forgot Password
-- Upload Image to Firestorage
-- Session Handling
-- Logout
+- [Logout (Branch: feature/logout)](https://www.youtube.com/watch?v=uUMFHZEzGQE)
 
 
 ## Branches
@@ -40,6 +33,7 @@ Extra (Pending)
 - **modification/design** has complete code with new design, refacotred code and modification in logic etc.
 - **feature/regsiter** has related to register with email and password.
 - **feature/login** has related to login with email and password.
+- **feature/logout** has related to login with email and password.
 
 ### Youtube Playlist
 [Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
