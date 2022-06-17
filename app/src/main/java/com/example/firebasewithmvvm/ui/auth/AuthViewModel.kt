@@ -26,6 +26,7 @@ class AuthViewModel @Inject constructor(
     val forgotPassword: LiveData<UiState<String>>
         get() = _forgotPassword
 
+
     fun register(
         email: String,
         password: String,
@@ -57,5 +58,9 @@ class AuthViewModel @Inject constructor(
         repository.forgotPassword(email){
             _forgotPassword.value = it
         }
+    }
+
+    fun logout(result: () -> Unit){
+        repository.logout(result)
     }
 }

@@ -16,7 +16,7 @@
         <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/fragment_note_detail.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_note_listing.xml" value="0.21041666666666667" />
+        <entry key="app/src/main/res/layout/fragment_note_listing.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/item_chip.xml" value="0.29322916666666665" />
         <entry key="app/src/main/res/layout/item_note_layout.xml" value="0.27760416666666665" />
