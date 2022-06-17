@@ -100,4 +100,9 @@ class AuthRepositoryImp(
                 result.invoke(UiState.Failure("Authentication failed, Check email"))
             }
     }
+
+    override fun logout(result: () -> Unit) {
+        auth.signOut()
+        result.invoke()
+    }
 }
