@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.firebasewithmvvm.R
 import com.example.firebasewithmvvm.data.model.Note
 import com.example.firebasewithmvvm.databinding.FragmentNoteDetailBinding
+import com.example.firebasewithmvvm.ui.auth.AuthViewModel
 import com.example.firebasewithmvvm.util.*
 import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,7 @@ class NoteDetailFragment : Fragment() {
     val TAG: String = "NoteDetailFragment"
     lateinit var binding: FragmentNoteDetailBinding
     val viewModel: NoteViewModel by viewModels()
+    val authViewModel: AuthViewModel by viewModels()
     var objNote: Note? = null
     var tagsList: MutableList<String> = arrayListOf()
 
@@ -242,6 +244,6 @@ class NoteDetailFragment : Fragment() {
             description = binding.description.text.toString(),
             tags = tagsList,
             date = Date()
-        )
+        ).apply { authViewModel.getSession { this.user_id = it?.id ?: "" } }
     }
 }
