@@ -14,8 +14,9 @@ class NoteRepositoryImp(
     val database: FirebaseFirestore
 ) : NoteRepository {
 
-    override fun getNotes(result: (UiState<List<Note>>) -> Unit) {
+    override fun getNotes(user: User?, result: (UiState<List<Note>>) -> Unit) {
         database.collection(FireStoreCollection.NOTE)
+            .whereEqualTo(FireStoreDocumentField.USER_ID,user?.id)
             .orderBy(FireStoreDocumentField.DATE, Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener {

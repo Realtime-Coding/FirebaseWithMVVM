@@ -40,17 +40,6 @@ class NoteListingFragment : Fragment() {
         )
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.e(TAG, "onAttach: ")
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.e(TAG, "******************************************************")
-        Log.e(TAG, "onCreate: ")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -79,7 +68,9 @@ class NoteListingFragment : Fragment() {
                 findNavController().navigate(R.id.action_noteListingFragment_to_loginFragment)
             }
         }
-        viewModel.getNotes()
+        authViewModel.getSession {
+            viewModel.getNotes(it)
+        }
     }
 
     private fun oberver(){
@@ -98,40 +89,5 @@ class NoteListingFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.e(TAG, "onStart: ")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.e(TAG, "onResume: ")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.e(TAG, "onPause: ")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.e(TAG, "onStop: ")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.e(TAG, "onDestroyView: ")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e(TAG, "onDestroy: ")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Log.e(TAG, "onDetach: ")
     }
 }
