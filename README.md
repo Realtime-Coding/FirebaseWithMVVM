@@ -21,6 +21,8 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - [Register with email/password (Branch: feature/register)](https://www.youtube.com/watch?v=xsEDL0Y3Ays&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=17)
 - [Login with email/password (Branch: feature/login)](https://www.youtube.com/watch?v=r48IHaYEJTk&list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL&index=18)
 - [Logout (Branch: feature/logout)](https://www.youtube.com/watch?v=uUMFHZEzGQE)
+- [Session (Branch: feature/session-handling)](https://youtu.be/uP2R6Trij4A)
+- [WhereEqualTo User Notes (Branch: feature/user-notes)](https://youtu.be/UWPz6344gb0)
 
 
 ## Branches
@@ -33,7 +35,9 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - **modification/design** has complete code with new design, refacotred code and modification in logic etc.
 - **feature/regsiter** has related to register with email and password.
 - **feature/login** has related to login with email and password.
-- **feature/logout** has related to login with email and password.
+- **feature/logout** has related to logout.
+- **feature/session-handling** has related to session handling
+- **feature/user-notes** has related to getting notes based on user id to see its own notes.
 
 ### Youtube Playlist
 [Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
