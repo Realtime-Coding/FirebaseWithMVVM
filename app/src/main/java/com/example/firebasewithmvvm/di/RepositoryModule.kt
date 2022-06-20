@@ -1,11 +1,13 @@
 package com.example.firebasewithmvvm.di
 
+import android.content.SharedPreferences
 import com.example.firebasewithmvvm.data.repository.AuthRepository
 import com.example.firebasewithmvvm.data.repository.AuthRepositoryImp
 import com.example.firebasewithmvvm.data.repository.NoteRepository
 import com.example.firebasewithmvvm.data.repository.NoteRepositoryImp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,8 +30,10 @@ object RepositoryModule {
     @Singleton
     fun provideAutghRepository(
         database: FirebaseFirestore,
-        auth: FirebaseAuth
+        auth: FirebaseAuth,
+        appPreferences: SharedPreferences,
+        gson: Gson
     ): AuthRepository {
-        return AuthRepositoryImp(auth,database)
+        return AuthRepositoryImp(auth,database,appPreferences,gson)
     }
 }
