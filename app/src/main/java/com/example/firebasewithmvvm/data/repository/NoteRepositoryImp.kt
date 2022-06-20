@@ -1,8 +1,11 @@
 package com.example.firebasewithmvvm.data.repository
 
+import android.content.SharedPreferences
 import com.example.firebasewithmvvm.data.model.Note
+import com.example.firebasewithmvvm.data.model.User
 import com.example.firebasewithmvvm.util.FireStoreCollection
 import com.example.firebasewithmvvm.util.FireStoreDocumentField
+import com.example.firebasewithmvvm.util.SharedPrefConstants
 import com.example.firebasewithmvvm.util.UiState
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query

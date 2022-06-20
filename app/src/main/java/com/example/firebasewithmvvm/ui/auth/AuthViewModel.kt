@@ -63,4 +63,8 @@ class AuthViewModel @Inject constructor(
     fun logout(result: () -> Unit){
         repository.logout(result)
     }
+
+    fun getSession(result: (User?) -> Unit){
+        repository.getSession(result)
+    }
 }
