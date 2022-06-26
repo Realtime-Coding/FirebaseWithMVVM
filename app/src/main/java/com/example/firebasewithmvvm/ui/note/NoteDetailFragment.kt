@@ -194,11 +194,7 @@ class NoteDetailFragment : Fragment() {
         }
         binding.done.setOnClickListener {
             if (validation()) {
-                if (objNote == null) {
-                    viewModel.addNote(getNote())
-                } else {
-                    viewModel.updateNote(getNote())
-                }
+                onDonePressed()
             }
         }
         binding.title.doAfterTextChanged {
@@ -290,7 +286,46 @@ class NoteDetailFragment : Fragment() {
             title = binding.title.text.toString(),
             description = binding.description.text.toString(),
             tags = tagsList,
+            images = getImageUrls(),
             date = Date()
         ).apply { authViewModel.getSession { this.user_id = it?.id ?: "" } }
+    }
+
+    private fun getImageUrls(): List<String> {
+        if (imageUris.isNotEmpty()){
+            return imageUris.map { it.toString() }
+        }else{
+            return objNote?.images ?: arrayListOf()
+        }
+    }
+
+    private fun onDonePressed() {
+        if (imageUris.isNotEmpty()){
+            viewModel.onUploadSingleFile(imageUris.first()){ state ->
+                when (state) {
+                    is UiState.Loading -> {
+                        binding.progressBar.show()
+                    }
+                    is UiState.Failure -> {
+                        binding.progressBar.hide()
+                        toast(state.error)
+                    }
+                    is UiState.Success -> {
+                        binding.progressBar.hide()
+                        if (objNote == null) {
+                            viewModel.addNote(getNote())
+                        } else {
+                            viewModel.updateNote(getNote())
+                        }
+                    }
+                }
+            }
+        }else{
+            if (objNote == null) {
+                viewModel.addNote(getNote())
+            } else {
+                viewModel.updateNote(getNote())
+            }
+        }
     }
 }
