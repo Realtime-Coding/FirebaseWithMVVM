@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -161,6 +162,8 @@ class NoteDetailFragment : Fragment() {
         binding.images.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
         binding.images.adapter = adapter
         binding.images.itemAnimator = null
+        imageUris = objNote?.images?.map { it.toUri() }?.toMutableList() ?: arrayListOf()
+        adapter.updateList(imageUris)
         binding.addImageLl.setOnClickListener {
             binding.progressBar.show()
             ImagePicker.with(this)
@@ -209,6 +212,9 @@ class NoteDetailFragment : Fragment() {
 
     private fun onRemoveImage(pos: Int, item: Uri) {
         adapter.removeItem(pos)
+        if (objNote != null){
+            binding.edit.performClick()
+        }
     }
 
     private fun showAddTagDialog(){
@@ -301,7 +307,7 @@ class NoteDetailFragment : Fragment() {
 
     private fun onDonePressed() {
         if (imageUris.isNotEmpty()){
-            viewModel.onUploadSingleFile(imageUris.first()){ state ->
+            viewModel.onUploadMultipleFile(imageUris){ state ->
                 when (state) {
                     is UiState.Loading -> {
                         binding.progressBar.show()
