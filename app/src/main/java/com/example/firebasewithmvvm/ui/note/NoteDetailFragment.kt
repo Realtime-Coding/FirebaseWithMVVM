@@ -1,19 +1,26 @@
 package com.example.firebasewithmvvm.ui.note
 
+import android.app.Activity
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasewithmvvm.R
 import com.example.firebasewithmvvm.data.model.Note
 import com.example.firebasewithmvvm.databinding.FragmentNoteDetailBinding
 import com.example.firebasewithmvvm.ui.auth.AuthViewModel
 import com.example.firebasewithmvvm.util.*
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -28,6 +35,29 @@ class NoteDetailFragment : Fragment() {
     val authViewModel: AuthViewModel by viewModels()
     var objNote: Note? = null
     var tagsList: MutableList<String> = arrayListOf()
+    var imageUris: MutableList<Uri> = arrayListOf()
+    val adapter by lazy {
+        ImageListingAdapter(
+            onCancelClicked = { pos, item -> onRemoveImage(pos,item)}
+        )
+    }
+
+    private val startForProfileImageResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            val resultCode = result.resultCode
+            val data = result.data
+            if (resultCode == Activity.RESULT_OK) {
+                val fileUri = data?.data!!
+                imageUris.add(fileUri)
+                adapter.updateList(imageUris)
+                binding.progressBar.hide()
+            } else if (resultCode == ImagePicker.RESULT_ERROR) {
+                binding.progressBar.hide()
+                toast(ImagePicker.getError(data))
+            } else {
+                binding.progressBar.hide()
+                Log.e(TAG,"Task Cancelled")
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -128,6 +158,19 @@ class NoteDetailFragment : Fragment() {
             binding.delete.hide()
             isMakeEnableUI(true)
         }
+        binding.images.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+        binding.images.adapter = adapter
+        binding.images.itemAnimator = null
+        binding.addImageLl.setOnClickListener {
+            binding.progressBar.show()
+            ImagePicker.with(this)
+                //.crop()
+                .compress(1024)
+                .galleryOnly()
+                .createIntent { intent ->
+                    startForProfileImageResult.launch(intent)
+                }
+        }
         binding.back.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -166,6 +209,10 @@ class NoteDetailFragment : Fragment() {
             binding.done.show()
             binding.edit.hide()
         }
+    }
+
+    private fun onRemoveImage(pos: Int, item: Uri) {
+        adapter.removeItem(pos)
     }
 
     private fun showAddTagDialog(){

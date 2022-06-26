@@ -125,13 +125,47 @@
                 app:layout_constraintStart_toEndOf="@+id/date_label"
                 app:layout_constraintTop_toTopOf="@+id/date_label" />
 
-            <View
-                android:id="@+id/space"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
+            <LinearLayout
+                android:id="@+id/add_image_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date">
+
+                <TextView
+                    android:id="@+id/image_label"
+                    style="@style/TextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Images"
+                    android:textColor="@color/black70"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
+
+                <ImageView
+                    android:id="@+id/image_add"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_baseline_add_circle_24"
+                    app:layout_constraintEnd_toStartOf="@+id/done"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/black" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/images"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/date" />
+                app:layout_constraintTop_toBottomOf="@+id/add_image_ll"
+                tools:itemCount="1"
+                tools:listitem="@layout/image_layout" />
 
             <LinearLayout
                 android:id="@+id/add_tag_ll"
@@ -168,9 +202,11 @@
                 android:id="@+id/tags"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/date"
-                app:layout_constraintTop_toBottomOf="@+id/space"/>
+                app:layout_constraintStart_toEndOf="@+id/add_tag_ll"
+                app:layout_constraintTop_toBottomOf="@+id/images"/>
 
             <View
                 android:id="@+id/middle_divider"
