@@ -23,6 +23,9 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - [Logout (Branch: feature/logout)](https://www.youtube.com/watch?v=uUMFHZEzGQE)
 - [Session (Branch: feature/session-handling)](https://youtu.be/uP2R6Trij4A)
 - [WhereEqualTo User Notes (Branch: feature/user-notes)](https://youtu.be/UWPz6344gb0)
+- [Pick Image (Branch: feature/pick-images)](https://youtu.be/UWPz6344gb0)
+- [Upload single image to Firebase Storage Notes (Branch: feature/upload-single-image)](https://youtu.be/UWPz6344gb0)
+- [Upload multiple images to Firebase Storage (Branch: feature/upload-multiple-images)](https://youtu.be/UWPz6344gb0)
 
 
 ## Branches
@@ -38,6 +41,11 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - **feature/logout** has related to logout.
 - **feature/session-handling** has related to session handling
 - **feature/user-notes** has related to getting notes based on user id to see its own notes.
+- **(feature/pick-images)** has related to pick image from gallery.
+- **(feature/upload-single-image)**  has related to upload single image to firebase storage.
+- **(feature/upload-multiple-images)** has related to upload multiple images to firebase storage.
+
+
 
 ### Youtube Playlist
 [Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
