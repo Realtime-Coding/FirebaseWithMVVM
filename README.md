@@ -48,8 +48,12 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - **(design/tablayout-viewpager2)** has related to viewpager2, tablayout and jetpack navigation global action.
 
 
-### Youtube Playlist
+## Youtube Playlist
 [Click for the whole course playlist](https://www.youtube.com/playlist?list=PLIIWAqaTrNlg7q0cfajkBj8OwG60qpBVL)
+
+
+## Articles
+- [Upload multiple images to Firebase Storage](https://realtimecoding.com/uploading-multiple-files-to-firebasestorage)
 
 ## Demo
 
