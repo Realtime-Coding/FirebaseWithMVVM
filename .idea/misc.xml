@@ -14,13 +14,17 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/add_tag_dialog.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.2791666666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.240625" />
         <entry key="app/src/main/res/layout/fragment_note_detail.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_note_listing.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_note_listing.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.24322916666666666" />
+        <entry key="app/src/main/res/layout/fragment_task_listing.xml" value="0.27447916666666666" />
         <entry key="app/src/main/res/layout/image_layout.xml" value="0.5070114135742188" />
         <entry key="app/src/main/res/layout/item_chip.xml" value="0.29322916666666665" />
         <entry key="app/src/main/res/layout/item_note_layout.xml" value="0.27760416666666665" />
+        <entry key="app/src/main/res/layout/item_tab_layout.xml" value="0.25885416666666666" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.28854166666666664" />
       </map>
     </option>
   </component>

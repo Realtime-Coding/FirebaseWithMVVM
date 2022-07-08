@@ -15,4 +15,9 @@
     <string name="enter_password">Enter password</string>
     <string name="invalid_password">Your password must be at least 8 characters</string>
     <string name="logout">Logout</string>
+    <string name="noteListingFragment">Notes</string>
+    <string name="taskListingFragment">Tasks</string>
+    <string name="notes">Notes</string>
+    <string name="tasks">Tasks</string>
+    <string name="home_fragment">Home</string>
 </resources>

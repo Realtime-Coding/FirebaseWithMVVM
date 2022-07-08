@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -161,6 +162,8 @@ class NoteDetailFragment : Fragment() {
         binding.images.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
         binding.images.adapter = adapter
         binding.images.itemAnimator = null
+        imageUris = objNote?.images?.map { it.toUri() }?.toMutableList() ?: arrayListOf()
+        adapter.updateList(imageUris)
         binding.addImageLl.setOnClickListener {
             binding.progressBar.show()
             ImagePicker.with(this)
@@ -194,11 +197,7 @@ class NoteDetailFragment : Fragment() {
         }
         binding.done.setOnClickListener {
             if (validation()) {
-                if (objNote == null) {
-                    viewModel.addNote(getNote())
-                } else {
-                    viewModel.updateNote(getNote())
-                }
+                onDonePressed()
             }
         }
         binding.title.doAfterTextChanged {
@@ -213,6 +212,9 @@ class NoteDetailFragment : Fragment() {
 
     private fun onRemoveImage(pos: Int, item: Uri) {
         adapter.removeItem(pos)
+        if (objNote != null){
+            binding.edit.performClick()
+        }
     }
 
     private fun showAddTagDialog(){
@@ -290,7 +292,46 @@ class NoteDetailFragment : Fragment() {
             title = binding.title.text.toString(),
             description = binding.description.text.toString(),
             tags = tagsList,
+            images = getImageUrls(),
             date = Date()
         ).apply { authViewModel.getSession { this.user_id = it?.id ?: "" } }
+    }
+
+    private fun getImageUrls(): List<String> {
+        if (imageUris.isNotEmpty()){
+            return imageUris.map { it.toString() }
+        }else{
+            return objNote?.images ?: arrayListOf()
+        }
+    }
+
+    private fun onDonePressed() {
+        if (imageUris.isNotEmpty()){
+            viewModel.onUploadMultipleFile(imageUris){ state ->
+                when (state) {
+                    is UiState.Loading -> {
+                        binding.progressBar.show()
+                    }
+                    is UiState.Failure -> {
+                        binding.progressBar.hide()
+                        toast(state.error)
+                    }
+                    is UiState.Success -> {
+                        binding.progressBar.hide()
+                        if (objNote == null) {
+                            viewModel.addNote(getNote())
+                        } else {
+                            viewModel.updateNote(getNote())
+                        }
+                    }
+                }
+            }
+        }else{
+            if (objNote == null) {
+                viewModel.addNote(getNote())
+            } else {
+                viewModel.updateNote(getNote())
+            }
+        }
     }
 }
