@@ -23,10 +23,13 @@ import com.example.firebasewithmvvm.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 
+private const val ARG_PARAM1 = "param1"
+
 @AndroidEntryPoint
 class NoteListingFragment : Fragment() {
 
     val TAG: String = "NoteListingFragment"
+    var param1: String? = null
     lateinit var binding: FragmentNoteListingBinding
     val viewModel: NoteViewModel by viewModels()
     val authViewModel: AuthViewModel by viewModels()
@@ -40,11 +43,17 @@ class NoteListingFragment : Fragment() {
         )
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.e(TAG, "onCreateView: ")
         if (this::binding.isInitialized){
             return binding.root
         }else {
@@ -55,7 +64,6 @@ class NoteListingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e(TAG, "onViewCreated: ")
         oberver()
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         binding.recyclerView.layoutManager = staggeredGridLayoutManager
@@ -63,11 +71,7 @@ class NoteListingFragment : Fragment() {
         binding.button.setOnClickListener {
             findNavController().navigate(R.id.action_noteListingFragment_to_noteDetailFragment)
         }
-        binding.logout.setOnClickListener {
-            authViewModel.logout {
-                findNavController().navigate(R.id.action_noteListingFragment_to_loginFragment)
-            }
-        }
+
         authViewModel.getSession {
             viewModel.getNotes(it)
         }
@@ -89,5 +93,15 @@ class NoteListingFragment : Fragment() {
                 }
             }
         }
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String) =
+            NoteListingFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                }
+            }
     }
 }

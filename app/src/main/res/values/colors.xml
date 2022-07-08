@@ -16,4 +16,7 @@
 
     <color name="background_clr">#FAFBFF</color>
 
+    <color name="tab_selected">#FF000000</color>
+    <color name="tab_unselected">#4D000000</color>
+
 </resources>

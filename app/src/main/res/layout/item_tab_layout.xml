@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabTitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:fontFamily="@font/titillium_web_bold"
+    android:ellipsize="marquee"
+    android:singleLine="true"
+    android:gravity="center"
+    android:textColor="@color/black"
+    android:textSize="16dp"
+    tools:text="Requests" />

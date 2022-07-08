@@ -19,3 +19,8 @@ object FirebaseStorageConstants {
     val ROOT_DIRECTORY = "app"
     val NOTE_IMAGES = "note"
 }
+
+enum class HomeTabs(val index: Int, val key: String) {
+    NOTES(0, "notes"),
+    TASKS(1, "tasks"),
+}
