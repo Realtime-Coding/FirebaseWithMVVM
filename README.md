@@ -59,12 +59,20 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 
 <table>
   <tr>
+    <td>Login</td>
+    <td>Register</td>
+    <td>Forgot Password</td>
     <td>Note Listing Screen</td>
-     <td>Note Detail/Create/Update Screen</td>
+    <td>Note Detail/Create/Update Screen</td>
+
+
   </tr>
   <tr>
-    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/note-taking-listing.jpg" width=270 height=520></td>
-    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/note-taking-detail.jpg" width=270 height=520></td>
+    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/screenshots/note-taking-login.jpg" width=270 height=520></td>
+    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/screenshots/note-taking-register.jpg" width=270 height=520></td>
+    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/screenshots/note-taking-forgotpassword.jpg" width=270 height=520></td>
+    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/screenshots/note-taking-listing.jpg" width=270 height=520></td>
+    <td><img src="https://github.com/shahzadafridi/FirebaseWithMVVM/blob/master/screenshots/note-taking-detail.jpg" width=270 height=520></td>
   </tr>
  </table>
 
