@@ -38,6 +38,10 @@ class TaskListingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.addTaskButton.setOnClickListener {
+            val createTaskFragmentSheet = CreateTaskFragment()
+            createTaskFragmentSheet.show(childFragmentManager,"create_task")
+        }
     }
 
     companion object {

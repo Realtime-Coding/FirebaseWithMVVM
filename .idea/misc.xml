@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.212" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/add_tag_dialog.xml" value="0.21041666666666667" />
+        <entry key="app/src/main/res/layout/fragment_create_task.xml" value="0.26366559485530544" />
         <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.240625" />

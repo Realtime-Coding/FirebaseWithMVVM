@@ -61,4 +61,10 @@
         <item name="cornerSize">8%</item>
     </style>
 
+    <style name="CustomTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/black10</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="hintTextColor">@color/black50</item>
+    </style>
+
 </resources>
