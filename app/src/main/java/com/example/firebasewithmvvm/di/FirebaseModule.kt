@@ -2,6 +2,7 @@ package com.example.firebasewithmvvm.di
 
 import com.example.firebasewithmvvm.util.FirebaseStorageConstants
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -14,6 +15,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object FirebaseModule {
+
+    @Provides
+    @Singleton
+    fun provideFirebaseDatabaseInstance(): FirebaseDatabase{
+        return FirebaseDatabase.getInstance()
+    }
 
     @Provides
     @Singleton

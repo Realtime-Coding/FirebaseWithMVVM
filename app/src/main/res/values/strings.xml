@@ -20,4 +20,8 @@
     <string name="notes">Notes</string>
     <string name="tasks">Tasks</string>
     <string name="home_fragment">Home</string>
+    <string name="create_task">Create Task</string>
+    <string name="create">Create</string>
+    <string name="done">Done</string>
+    <string name="error_task_detail">Task detail is missing</string>
 </resources>

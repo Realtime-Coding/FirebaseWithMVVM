@@ -5,6 +5,10 @@ object FireStoreCollection{
     val USER = "user"
 }
 
+object FireDatabase{
+    val TASK = "task"
+}
+
 object FireStoreDocumentField {
     val DATE = "date"
     val USER_ID = "user_id"

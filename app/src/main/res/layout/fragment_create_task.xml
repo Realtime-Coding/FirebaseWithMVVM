@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetNext"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_clr"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:background="@color/white"
+        android:fontFamily="@font/titillium_web_bold"
+        android:gravity="center"
+        android:text="@string/create_task"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cancel"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_baseline_cancel_24"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/task_tilayout"
+        style="@style/CustomTextInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="255"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/task_et"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:maxLength="255"
+            android:gravity="top|left"
+            android:fontFamily="@font/titillium_web_regular"
+            android:hint="Task Detail"
+            android:inputType="textMultiLine"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/done"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/black_rect_bg"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textAppearance="@style/SubTitleStyle"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/black"
+        android:layout_marginTop="36dp"
+        android:layout_marginHorizontal="60dp"
+        app:layout_constraintEnd_toEndOf="@+id/task_tilayout"
+        app:layout_constraintStart_toStartOf="@+id/task_tilayout"
+        app:layout_constraintTop_toBottomOf="@+id/task_tilayout" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:indeterminateTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bottom_space"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/done" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
