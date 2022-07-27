@@ -5,17 +5,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasewithmvvm.R
 import com.example.firebasewithmvvm.databinding.FragmentNoteListingBinding
 import com.example.firebasewithmvvm.databinding.FragmentTaskListingBinding
+import com.example.firebasewithmvvm.ui.auth.AuthViewModel
+import com.example.firebasewithmvvm.util.UiState
+import com.example.firebasewithmvvm.util.hide
+import com.example.firebasewithmvvm.util.show
+import com.example.firebasewithmvvm.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_PARAM1 = "param1"
 
+@AndroidEntryPoint
 class TaskListingFragment : Fragment() {
 
     val TAG: String = "TaskListingFragment"
     private var param1: String? = null
+    val viewModel: TaskViewModel by viewModels()
+    val authViewModel: AuthViewModel by viewModels()
     lateinit var binding: FragmentTaskListingBinding
+    val adapter by lazy{
+        TaskListingAdapter(
+            onDeleteClicked = { pos, item -> }
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +57,32 @@ class TaskListingFragment : Fragment() {
         binding.addTaskButton.setOnClickListener {
             val createTaskFragmentSheet = CreateTaskFragment()
             createTaskFragmentSheet.show(childFragmentManager,"create_task")
+        }
+
+        binding.taskListing.layoutManager = LinearLayoutManager(requireContext())
+        binding.taskListing.adapter = adapter
+
+        authViewModel.getSession {
+            viewModel.getTasks(it)
+        }
+        observer()
+    }
+
+    private fun observer(){
+        viewModel.tasks.observe(viewLifecycleOwner) { state ->
+            when(state){
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(state.error)
+                }
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    adapter.updateList(state.data.toMutableList())
+                }
+            }
         }
     }
 
