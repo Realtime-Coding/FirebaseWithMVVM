@@ -28,6 +28,7 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - [Upload multiple images to Firebase Storage (Branch: feature/upload-multiple-images)](https://youtu.be/UWPz6344gb0)
 - [Viewpager2, TabLayout & Navigation Global Action (Branch: design/tablayout-viewpager2)](https://youtu.be/meJIEA_RalU)
 - [Create Task using Firebase Database (Branch: feature/create-task)](https://youtu.be/TJOw6vFSPrE)
+- [Listing Task using Firebase Database (Branch: feature/task-listing)](https://www.youtube.com/watch?v=tZ7tSXamPn0)
 
 
 ## Branches
@@ -48,6 +49,7 @@ In this project we will learn about Firebase Implementation with MVVM Architectu
 - **(feature/upload-multiple-images)** has related to upload multiple images to firebase storage.
 - **(design/tablayout-viewpager2)** has related to viewpager2, tablayout and jetpack navigation global action.
 - **(feature/create-task)** has related to creating a task using firebase database
+- **(feature/task-listing)** has related to listing of task from firebase database
 
 
 ## Youtube Playlist
