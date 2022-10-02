@@ -26,10 +26,11 @@ class TaskListingFragment : Fragment() {
     val viewModel: TaskViewModel by viewModels()
     val authViewModel: AuthViewModel by viewModels()
     lateinit var binding: FragmentTaskListingBinding
+    var deleteItemPos = -1
     val adapter by lazy{
         TaskListingAdapter(
             onItemClicked = { pos, item -> onTaskClicked(item)},
-            onDeleteClicked = { pos, item -> }
+            onDeleteClicked = { pos, item -> onDeleteClicked(pos,item) }
         )
     }
 
@@ -91,6 +92,22 @@ class TaskListingFragment : Fragment() {
                 }
             }
         }
+        viewModel.deleteTask.observe(viewLifecycleOwner) { state ->
+            when(state){
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(state.error)
+                }
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    toast(state.data.second)
+                    adapter.removeItem(deleteItemPos)
+                }
+            }
+        }
     }
 
     private fun onTaskClicked(task: Task){
@@ -103,6 +120,11 @@ class TaskListingFragment : Fragment() {
             }
         }
         createTaskFragmentSheet.show(childFragmentManager,"create_task")
+    }
+
+    private fun onDeleteClicked(pos: Int, item: Task) {
+        deleteItemPos = pos
+        viewModel.deleteTask(item)
     }
 
     companion object {

@@ -24,6 +24,11 @@ class TaskViewModel @Inject constructor(
     val updateTask: LiveData<UiState<Pair<Task,String>>>
         get() = _updateTask
 
+    private val _deleteTask = MutableLiveData<UiState<Pair<Task,String>>>()
+    val deleteTask: LiveData<UiState<Pair<Task,String>>>
+        get() = _deleteTask
+
+
     private val _tasks = MutableLiveData<UiState<List<Task>>>()
     val tasks: LiveData<UiState<List<Task>>>
         get() = _tasks
@@ -41,6 +46,11 @@ class TaskViewModel @Inject constructor(
     fun getTasks(user: User?) {
         _tasks.value = UiState.Loading
         repository.getTasks(user) { _tasks.value = it }
+    }
+
+    fun deleteTask(task: Task){
+        _deleteTask.value = UiState.Loading
+        repository.deleteTask(task) { _deleteTask.value = it }
     }
 
 }

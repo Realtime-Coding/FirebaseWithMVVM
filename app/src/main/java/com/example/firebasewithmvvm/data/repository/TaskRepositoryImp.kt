@@ -37,7 +37,7 @@ class TaskRepositoryImp(
             .setValue(task)
             .addOnSuccessListener {
                 result.invoke(
-                    UiState.Success(Pair(task,"Task has been update successfully"))
+                    UiState.Success(Pair(task,"Task has been updated successfully"))
                 )
             }
             .addOnFailureListener {
@@ -59,6 +59,23 @@ class TaskRepositoryImp(
                     tasks.add(task)
                 }
                 result.invoke(UiState.Success(tasks.filterNotNull()))
+            }
+            .addOnFailureListener {
+                result.invoke(
+                    UiState.Failure(
+                        it.localizedMessage
+                    )
+                )
+            }
+    }
+
+    override fun deleteTask(task: Task, result: (UiState<Pair<Task,String>>) -> Unit) {
+        val reference = database.reference.child(FireDatabase.TASK).child(task.id)
+        reference.removeValue()
+            .addOnSuccessListener {
+                result.invoke(
+                    UiState.Success(Pair(task,"Task has been deleted successfully"))
+                )
             }
             .addOnFailureListener {
                 result.invoke(
