@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class CreateTaskFragment : BottomSheetDialogFragment() {
+class CreateTaskFragment(private val task: Task? = null) : BottomSheetDialogFragment() {
 
     val TAG: String = "CreateTaskFragment"
     lateinit var binding: FragmentCreateTaskBinding
@@ -44,13 +44,22 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        task?.let {
+            binding.taskEt.setText(it.description)
+        }
+
         binding.cancel.setOnClickListener {
             this.dismiss()
         }
 
         binding.done.setOnClickListener {
             if (validation()) {
-                viewModel.addTask(getTask())
+                if (task == null) {
+                    viewModel.addTask(getTask())
+                }else{
+                    task.description = binding.taskEt.text.toString()
+                    viewModel.updateTask(task)
+                }
             }
         }
         observer()
@@ -58,6 +67,24 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
 
     private fun observer(){
         viewModel.addTask.observe(viewLifecycleOwner) { state ->
+            when(state){
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(state.error)
+                }
+                is UiState.Success -> {
+                    isSuccessAddTask = true
+                    binding.progressBar.hide()
+                    toast(state.data.second)
+                    this.dismiss()
+                }
+            }
+        }
+
+        viewModel.updateTask.observe(viewLifecycleOwner) { state ->
             when(state){
                 is UiState.Loading -> {
                     binding.progressBar.show()
