@@ -56,6 +56,13 @@ class TaskListingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.addTaskButton.setOnClickListener {
             val createTaskFragmentSheet = CreateTaskFragment()
+            createTaskFragmentSheet.setDismissListener {
+                if (it) {
+                    authViewModel.getSession {
+                        viewModel.getTasks(it)
+                    }
+                }
+            }
             createTaskFragmentSheet.show(childFragmentManager,"create_task")
         }
 
