@@ -29,7 +29,8 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
     lateinit var binding: FragmentCreateTaskBinding
     val viewModel: TaskViewModel by viewModels()
     val authViewModel: AuthViewModel by viewModels()
-    private var closeFunction: (() -> Unit)? = null
+    var closeFunction: ((Boolean) -> Unit)? = null
+    var isSuccessAddTask: Boolean = false
 
 
     override fun onCreateView(
@@ -66,6 +67,7 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
                     toast(state.error)
                 }
                 is UiState.Success -> {
+                    isSuccessAddTask = true
                     binding.progressBar.hide()
                     toast(state.data.second)
                     this.dismiss()
@@ -92,7 +94,7 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
         ).apply { authViewModel.getSession { this.user_id = it?.id ?: "" } }
     }
 
-    fun setDismissListener(function: (() -> Unit)?) {
+    fun setDismissListener(function: ((Boolean) -> Unit)?) {
         closeFunction = function
     }
 
@@ -110,6 +112,6 @@ class CreateTaskFragment : BottomSheetDialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        closeFunction?.invoke()
+        closeFunction?.invoke(isSuccessAddTask)
     }
 }
